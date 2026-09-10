@@ -16,10 +16,10 @@
 ##Who would use the system
 - Potential users include:
 
-Fleet operators — monitor multiple vehicles
-Maintenance teams — prioritize vehicles requiring attention
-Logistics companies — reduce vehicle downtime
-Automotive service providers — identify potential maintenance needs
+- Fleet operators — monitor multiple vehicles
+- Maintenance teams — prioritize vehicles requiring attention
+- Logistics companies — reduce vehicle downtime
+- Automotive service providers — identify potential maintenance needs
 
 ---
 ##What data could be collected
@@ -40,17 +40,14 @@ Automotive service providers — identify potential maintenance needs
 ##Proposed solution
 - Build an end-to-end prototype that:
 
-        Vehicle Data
-             ↓
-    Data Collection / Simulation
-             ↓
-        Data Storage
-             ↓
-    Data Processing & Analysis
-             ↓
-    Machine Learning Model
-             ↓
-    Maintenance Prediction
+```mermaid
+flowchart TD
+    A[Vehicle Data] --> B[Data Collection / Simulation]
+    B --> C[Data Storage]
+    C --> D[Data Processing & Analysis]
+    D --> E[Machine Learning Model]
+    E --> F[Maintenance Prediction]
+```
 
 - The initial dataset will be generated using Python, processed using Pandas/NumPy, and later used to develop a machine-learning model for maintenance prediction.
 

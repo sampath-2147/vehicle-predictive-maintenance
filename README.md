@@ -33,12 +33,44 @@ To avoid the following impacts by a delay -
 The proposed solution is to extract data collected from vehicle sensors in a structured format then clean and validate the data using python and then use relavent sensor readings to predict whether the maintenance may be required.
 
 ---
-## 5.Dataset
+## 5. Dataset
 
 This project uses simulated vehicle sensor data generated using Python.
 
-The dataset represents structured vehicle telemetry containing parameters such as engine temperature, battery voltage, vibration, brake temperature, speed, mileage, and fault codes.
+The dataset represents structured vehicle telemetry containing parameters such as engine temperature, battery voltage, vibration, brake temperature, speed, mileage, fault codes, and maintenance status.
 
-The `maintenance_required` field is generated using predefined rules based on selected sensor conditions. This labelled data will later be used to explore and build the machine learning model.
+The data was generated with predefined conditions to create a maintenance-required label. The dataset is used to demonstrate the complete predictive maintenance workflow.
 
-> **Note:** The dataset is simulated and does not represent real-world vehicle sensor data. Model performance on this dataset should not be considered real-world predictive accuracy.
+> Note: The dataset is simulated and does not represent real-world vehicle telemetry.
+
+---
+## 6. Data Processing
+
+The generated dataset was loaded and analyzed using Pandas and NumPy.
+
+The following data quality checks were performed:
+
+- Checked data types
+- Checked missing values
+- Checked duplicate records
+- Validated sensor value ranges
+- Converted timestamp values to datetime
+- Filtered and sorted records for analysis
+
+The processed dataset was saved separately in the `data/processed/` directory.
+
+---
+## 7. Exploratory Data Analysis
+
+Basic exploratory analysis was performed to understand the relationship between vehicle sensor readings and maintenance requirements.
+
+The analysis showed that observations labelled as requiring maintenance generally had:
+
+- Higher engine temperature
+- Higher vibration
+- Higher brake temperature
+- Slightly lower battery voltage
+
+These observations will be considered when selecting features for the machine learning stage.
+
+---
