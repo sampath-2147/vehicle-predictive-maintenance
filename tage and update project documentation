@@ -1,0 +1,6 @@
+warning: in the working copy of 'notebooks/01_data_exploration.ipynb', LF will be replaced by CRLF the next time Git touches it
+ README.md                           |  78 [32m+++++++++++[m[31m--[m
+ docs/architecture.md                |   5 [32m+[m[31m-[m
+ docs/project_notes.md               | 155 [32m++++++++++++++++++++++++[m[31m-[m
+ notebooks/01_data_exploration.ipynb | 225 [32m+++++++++++++++++++++++++++++[m[31m-------[m
+ 4 files changed, 410 insertions(+), 53 deletions(-)

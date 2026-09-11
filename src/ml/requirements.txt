@@ -1,0 +1,4 @@
+pandas        → data loading, cleaning, analysis
+numpy         → numerical operations
+scikit-learn  → machine learning
+joblib        → save/load trained ML model

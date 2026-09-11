@@ -46,18 +46,24 @@ The data was generated with predefined conditions to create a maintenance-requir
 ---
 ## 6. Data Processing
 
-The generated dataset was loaded and analyzed using Pandas and NumPy.
+The generated vehicle sensor data was processed using Python, Pandas, and NumPy.
 
-The following data quality checks were performed:
+The data was inspected for:
 
-- Checked data types
-- Checked missing values
-- Checked duplicate records
-- Validated sensor value ranges
-- Converted timestamp values to datetime
-- Filtered and sorted records for analysis
+- Missing values
+- Duplicate records
+- Data types
+- Invalid or unexpected categorical values
 
-The processed dataset was saved separately in the `data/processed/` directory.
+The timestamp field was converted to datetime for analysis.
+
+Basic filtering, sorting, grouping, numerical analysis, and exploratory analysis were also performed.
+
+The processed dataset was saved separately from the raw dataset.
+
+### Data Processing Output
+
+`data/processed/vehicle_sensor_data_cleaned.csv`
 
 ---
 ## 7. Exploratory Data Analysis
@@ -74,3 +80,57 @@ The analysis showed that observations labelled as requiring maintenance generall
 These observations will be considered when selecting features for the machine learning stage.
 
 ---
+## 8. SQL and Database
+
+The processed dataset was imported into MySQL for structured storage and analysis.
+
+A database named `vehicle_maintenance_db` was created with a `vehicle_sensor_data` table.
+
+SQL was used for:
+
+- Data validation
+- Record and NULL checks
+- Duplicate detection
+- Category validation
+- Vehicle-level analysis
+- Maintenance analysis
+- Fault-code analysis
+- ML data extraction
+
+The SQL scripts are organized in the `sql/` directory based on their purpose.
+
+---
+## 9. Machine Learning
+
+The project uses supervised machine learning to predict whether vehicle maintenance may be required.
+
+### Problem Type
+
+Binary classification.
+
+### Target
+
+`maintenance_required`
+
+- `0` → No
+- `1` → Yes
+
+### Model
+
+A Random Forest Classifier was used as the initial model.
+
+The workflow includes:
+
+1. Feature and target selection
+2. One-hot encoding of `fault_code`
+3. Train/test split
+4. Model training
+5. Prediction
+6. Model evaluation
+7. Feature-importance analysis
+
+The trained model is saved in:
+
+`src/ml/vehicle_maintenance_model.pkl`
+
+> Note: The current model is trained on simulated data. Its performance should not be considered representative of a real-world predictive maintenance system.

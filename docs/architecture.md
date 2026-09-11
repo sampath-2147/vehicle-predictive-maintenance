@@ -10,7 +10,10 @@ flowchart TD
     D --> E[Data Cleaning & Validation]
     E --> F[EDA]
     F --> G[Processed Dataset]
-```
+    G --> H[SQL Validation + Analysis]
+    H --> I[ML Feature Extraction]
+    I --> J[Random Forest]
+    J --> K[Maintenance Prediction]
 
 ---
 
