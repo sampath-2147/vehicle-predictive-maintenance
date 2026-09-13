@@ -1,29 +1,97 @@
- # Project Architecture
+# System Architecture
 
-## Current Workflow
+## Overview
 
-```mermaid
-flowchart TD
-    A[Vehicle Sensor Data] --> B[Python Data Generation]
-    B --> C[Raw CSV Dataset]
-    C --> D[Pandas / NumPy]
-    D --> E[Data Cleaning & Validation]
-    E --> F[EDA]
-    F --> G[Processed Dataset]
-    G --> H[SQL Validation + Analysis]
-    H --> I[ML Feature Extraction]
-    I --> J[Random Forest]
-    J --> K[Maintenance Prediction]
+The Vehicle Predictive Maintenance project combines data generation, data processing, SQL analysis, machine learning, and AWS services into a small end-to-end prototype.
 
----
+## Overall Flow
 
-## Planned Workflow
+Vehicle Sensor Data
+        |
+        v
+Python Data Generation
+        |
+        v
+Python / Pandas / NumPy
+        |
+        +--------------------+
+        |                    |
+        v                    v
+     MySQL             Machine Learning
+   SQL Analysis         Random Forest
+        |                    |
+        |                    v
+        |             Model Evaluation
+        |                    |
+        |                    v
+        |          vehicle_maintenance_model.pkl
+        |
+        +--------------------+
+                 |
+                 v
+             AWS Layer
+                 |
+                 v
+             Amazon S3
+                 |
+           S3 Event Trigger
+                 |
+                 v
+          AWS Lambda
+                 |
+        CSV Processing /
+    Maintenance Evaluation
+                 |
+                 v
+          CloudWatch Logs
 
-```mermaid
-flowchart TD
-    A[Processed Vehicle Data] --> B[(SQL Database)]
-    B --> C[Machine Learning Model]
-    C --> D[Maintenance Prediction]
-    D --> E[AWS Pipeline]
-    E --> F[Maintenance Decision / Alert]
-```
+## Component Responsibilities
+
+### Python
+
+Python is used to generate the simulated vehicle sensor dataset and perform data processing.
+
+### Pandas and NumPy
+
+Pandas and NumPy are used for data inspection, cleaning, validation, transformation, and exploratory analysis.
+
+### MySQL
+
+MySQL provides relational storage and allows SQL-based data validation and analysis.
+
+### Machine Learning
+
+A Random Forest Classifier is used as the initial machine-learning model for binary classification of maintenance requirements.
+
+### Amazon S3
+
+S3 provides cloud object storage for vehicle sensor CSV files.
+
+### AWS Lambda
+
+Lambda provides event-driven serverless processing when a file is uploaded to S3.
+
+### CloudWatch
+
+CloudWatch provides logging and monitoring for Lambda execution.
+
+## Current Prototype Boundary
+
+The machine-learning model is developed and evaluated locally.
+
+The AWS Lambda component currently uses lightweight maintenance-condition evaluation rather than loading the complete Scikit-learn runtime.
+
+This design was chosen to keep the AWS deployment lightweight while still demonstrating the cloud processing architecture.
+
+## Production Extension
+
+With real vehicle telemetry and historical maintenance records, the architecture could be extended with:
+
+- production data ingestion
+- stronger data validation
+- centralized model training
+- model versioning
+- scalable inference
+- alerting and notification
+- database integration
+- failure handling and retry mechanisms

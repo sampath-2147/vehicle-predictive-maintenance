@@ -1,4 +1,4 @@
- # Virtual environment
+# Virtual environment
 .venv/
 
 # Python cache
@@ -14,3 +14,8 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Lambda deployment artifacts
+aws/lambda/ml_inference/package/
+aws/lambda/ml_inference/lambda_lightweight/
+aws/lambda/ml_inference/*.zip

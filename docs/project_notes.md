@@ -209,3 +209,81 @@ Confusion matrix:
 ```text
 [[125   0]
  [  0  75]]
+
+
+## Day 5 — AWS Implementation Notes
+
+## AWS Setup
+
+Created an AWS environment using the Europe (Stockholm) region (`eu-north-1`).
+
+## S3
+
+Created the project S3 bucket and an `incoming/` folder.
+
+Uploaded:
+
+`vehicle_sensor_data_cleaned.csv`
+
+to the `incoming/` location.
+
+## S3 Event Trigger
+
+Configured an S3 event to invoke the vehicle data processing Lambda when a new object is uploaded.
+
+## Lambda
+
+Created a Python 3.12 Lambda using x86_64 architecture.
+
+The data-processing Lambda:
+1. Receives the S3 event
+2. Identifies the object
+3. Reads the CSV from S3
+4. Processes the records
+5. Writes execution information to CloudWatch
+
+The Lambda successfully processed 1,000 rows.
+
+## IAM
+
+Configured Lambda execution permissions for CloudWatch logging and S3 object access.
+
+## CloudWatch
+
+Verified Lambda execution through CloudWatch logs.
+
+Observed:
+- S3 event received
+- Bucket name
+- Object key
+- File size
+- Number of processed rows
+
+## ML Lambda Packaging Issue
+
+An attempt was made to package NumPy, SciPy, Scikit-learn, and Joblib for Lambda.
+
+Linux-compatible dependencies were successfully downloaded for Python 3.12 and x86_64.
+
+However, the resulting deployment package exceeded Lambda's unzipped deployment-size limit.
+
+## Engineering Decision
+
+Instead of forcing the large Scikit-learn runtime into the Lambda deployment, a lightweight Lambda implementation was created.
+
+The lightweight function uses the same maintenance-condition rules used to generate the simulated dataset labels.
+
+This allowed the AWS workflow to remain small and functional while keeping the Random Forest model as the project's machine-learning development and evaluation component.
+
+## Key Learning
+
+The AWS stage provided practical understanding of:
+
+- S3 object storage
+- S3 event-driven workflows
+- Lambda serverless execution
+- IAM permissions
+- CloudWatch logging
+- Python dependency compatibility
+- Lambda deployment constraints
+- Separating ML development from cloud processing

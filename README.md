@@ -134,3 +134,24 @@ The trained model is saved in:
 `src/ml/vehicle_maintenance_model.pkl`
 
 > Note: The current model is trained on simulated data. Its performance should not be considered representative of a real-world predictive maintenance system.
+
+## 10. AWS Cloud Integration
+
+The project includes a small AWS workflow to demonstrate cloud storage, event-driven processing, serverless execution, and monitoring.
+
+### AWS Architecture
+
+```text
+Vehicle Sensor CSV
+        ↓
+Amazon S3
+        ↓
+S3 Event Trigger
+        ↓
+AWS Lambda
+        ↓
+CSV Processing
+        ↓
+Maintenance Evaluation
+        ↓
+CloudWatch Logs
