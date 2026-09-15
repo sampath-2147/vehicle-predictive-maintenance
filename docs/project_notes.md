@@ -27,7 +27,7 @@
 - maintenance_required
 
 ### Note:
-- The dataset is generate due to lack of access to real time sensor dataset.
+- The dataset was generated because real-world vehicle sensor data was not available for this project.
 - The dataset is designed to contain relationships between sensor conditions and maintenance requirements.
 
 ## Day-2
@@ -287,3 +287,40 @@ The AWS stage provided practical understanding of:
 - Python dependency compatibility
 - Lambda deployment constraints
 - Separating ML development from cloud processing
+
+## Day 6 — Power BI Dashboard
+
+### What I Learned
+
+- Power BI dashboard structure
+- KPI cards
+- DAX measures
+- Slicers
+- Filter context
+- Cross-filtering
+- Interactive visual behavior
+- Dashboard layout and visual hierarchy
+
+### What I Built
+
+Created an interactive Power BI dashboard using the vehicle sensor data.
+
+The dashboard contains:
+
+- Total sensor records
+- Maintenance records
+- Normal records
+- Maintenance rate
+- Maintenance status distribution
+- Average sensor values by maintenance status
+- Fault-code analysis
+- Maintenance rate by vehicle
+- Maintenance records by vehicle
+
+Vehicle ID and fault-code slicers were added to allow interactive filtering.
+
+Power BI serves as the business-facing visualization layer of the prototype.
+
+### Final Output
+
+The final dashboard provides an interactive view of the vehicle maintenance dataset and allows users to explore the data without directly working with SQL queries or Python code.

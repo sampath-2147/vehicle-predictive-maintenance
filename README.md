@@ -155,3 +155,97 @@ CSV Processing
 Maintenance Evaluation
         ↓
 CloudWatch Logs
+
+## 11. Power BI Dashboard
+
+Power BI was used as the business-facing visualization layer of the project.
+
+The processed vehicle sensor data was connected to Power BI to create an interactive dashboard for vehicle maintenance monitoring.
+
+The dashboard includes:
+
+- Total sensor records
+- Maintenance records
+- Normal records
+- Maintenance rate
+- Maintenance status distribution
+- Average sensor values by maintenance status
+- Sensor records by fault code
+- Maintenance rate by vehicle
+- Maintenance records by vehicle
+
+Interactive slicers allow users to filter the dashboard by vehicle ID and fault code.
+
+### Dashboard Preview
+
+![Vehicle Predictive Maintenance Dashboard](screenshots/11_powerbi_dashboard.png)
+
+## 12. End-to-End Workflow
+
+```text
+                        Simulated Vehicle Sensor Data
+                                |
+                                v
+                        Python Data Generation
+                                |
+                                v
+                        Pandas / NumPy Processing
+                                |
+                                +----------------------+
+                                |                      |
+                                v                      v
+                                MySQL              Random Forest ML
+                                |                      |
+                                v                      v
+                        SQL Analysis             Prediction
+                                |                      |
+                                +----------+-----------+
+                                        |
+                                        v
+                                        Power BI
+                                        |
+                                        v
+                                Interactive Dashboard
+
+
+                        Cloud Processing Workflow
+
+                        Vehicle Sensor CSV
+                                |
+                                v
+                        Amazon S3
+                                |
+                        S3 Event Trigger
+                                |
+                                v
+                        Lambda
+                                |
+                                v
+                        CSV Processing
+                                |
+                                v
+                        CloudWatch Logs
+
+
+## 13 Limitations
+- The vehicle dataset is simulated rather than collected from real vehicle telemetry.
+- Maintenance labels were generated using predefined conditions.
+- The current machine-learning model therefore does not represent real-world predictive performance.
+- The AWS Lambda component demonstrates lightweight event-driven processing and does not currently host the - complete Scikit-learn model.
+- The prototype does not directly connect to vehicle sensors, ECU, OBD systems, or telematics devices.
+- The current dataset contains a relatively small number of vehicles compared with a production fleet.
+
+## 14 Future Improvements
+
+A production-oriented version could include:
+
+- Real vehicle telemetry and historical maintenance records
+- More comprehensive data validation
+- Additional feature engineering
+- Stronger model validation using real-world data
+- Model versioning and monitoring
+- Scalable cloud-based inference
+- Integration with an analytical database or data warehouse
+- Automated maintenance alerts
+- Fleet-level drill-through and reporting
+- Real-time or scheduled data ingestion

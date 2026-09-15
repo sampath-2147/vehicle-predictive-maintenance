@@ -6,45 +6,22 @@ The Vehicle Predictive Maintenance project combines data generation, data proces
 
 ## Overall Flow
 
-Vehicle Sensor Data
-        |
-        v
-Python Data Generation
-        |
-        v
-Python / Pandas / NumPy
-        |
-        +--------------------+
-        |                    |
-        v                    v
-     MySQL             Machine Learning
-   SQL Analysis         Random Forest
-        |                    |
-        |                    v
-        |             Model Evaluation
-        |                    |
-        |                    v
-        |          vehicle_maintenance_model.pkl
-        |
-        +--------------------+
-                 |
-                 v
-             AWS Layer
-                 |
-                 v
-             Amazon S3
-                 |
-           S3 Event Trigger
-                 |
-                 v
-          AWS Lambda
-                 |
-        CSV Processing /
-    Maintenance Evaluation
-                 |
-                 v
-          CloudWatch Logs
+                    ANALYTICAL PATH
+                         
+Python → Pandas → MySQL → Power BI → User
+                  |
+                  ↓
+                 SQL
 
+
+                    ML PATH
+
+Processed Data → Random Forest → Prediction
+
+
+                    CLOUD PATH
+
+CSV → S3 → Lambda → CloudWatch
 ## Component Responsibilities
 
 ### Python
