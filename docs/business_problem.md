@@ -49,7 +49,7 @@ flowchart TD
     E --> F[Maintenance Prediction]
 ```
 
-- The initial dataset will be generated using Python, processed using Pandas/NumPy, and later used to develop a machine-learning model for maintenance prediction.
+- The dataset was generated using Python, processed using Pandas/NumPy, and used to develop a machine-learning model for maintenance prediction.
 
 ---
 ## Expected output
